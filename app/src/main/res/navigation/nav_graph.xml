@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragSplash">
+
+    <fragment
+        android:id="@+id/fragSplash"
+        android:name="com.example.quickquiz.fragment.FragSplash"
+        android:label="frag_splash"
+        tools:layout="@layout/frag_splash" >
+        <action
+            android:id="@+id/action_fragSplash_to_fragList"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/fragSplash"
+            app:enterAnim="@anim/appear"
+            app:exitAnim="@anim/disappear"
+            app:destination="@id/fragList" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragList"
+        android:name="com.example.quickquiz.fragment.FragList"
+        android:label="frag_list"
+        tools:layout="@layout/frag_list" >
+        <action
+            android:id="@+id/action_fragList_to_fragDetails"
+            app:destination="@id/fragDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragDetails"
+        android:name="com.example.quickquiz.fragment.FragDetails"
+        android:label="frag_details"
+        tools:layout="@layout/frag_details" >
+        <action
+            android:id="@+id/action_fragDetails_to_fragQuiz"
+            app:destination="@id/fragQuiz" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragQuiz"
+        android:name="com.example.quickquiz.fragment.FragQuiz"
+        android:label="frag_quiz"
+        tools:layout="@layout/frag_quiz" >
+        <action
+            android:id="@+id/action_fragQuiz_to_fragResult"
+            app:destination="@id/fragResult" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragResult"
+        android:name="com.example.quickquiz.fragment.FragResult"
+        android:label="frag_result"
+        tools:layout="@layout/frag_result" />
+</navigation>

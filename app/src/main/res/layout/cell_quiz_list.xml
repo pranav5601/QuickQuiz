@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/lyt_img_poster"
+        app:cardCornerRadius="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+
+        <ImageView
+            android:id="@+id/img_quiz_poster"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/placeholder"
+            />
+
+
+    </androidx.cardview.widget.CardView>
+
+    <View
+        android:background="@drawable/img_gradiant"
+        android:layout_width="match_parent"
+        android:translationZ="10dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/lyt_img_poster"
+        app:layout_constraintEnd_toEndOf="@+id/lyt_img_poster"
+        android:layout_height="40dp"/>
+
+            <TextView
+                android:id="@+id/txtQuizName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/crimson_text"
+                android:text="@string/quiz"
+                android:textColor="@color/white"
+                android:textSize="@dimen/very_very_big_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/lyt_img_poster"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.031" />
+
+
+        <TextView
+            android:id="@+id/txtQuizDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/crimson_text"
+            android:text="fgjfghdhdfkjsyegfkauygfkuyawgkfjdagkuyguygouyluygktfv"
+            android:textColor="@color/white"
+            android:textSize="@dimen/big_text"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtQuizName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintVertical_bias="0.028"
+            />
+
+
+
+
+    <TextView
+                android:id="@+id/txtQuizLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/crimson_text"
+                android:text="@string/difficulty_level"
+                android:textColor="@color/text_gray"
+                android:textSize="@dimen/big_text"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtQuizDesc"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <Button
+                android:id="@+id/btn_view_quiz"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/btn_list_outline"
+                android:text="@string/view_quiz"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtQuizLevel"
+                app:layout_constraintHorizontal_bias="0.826" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
