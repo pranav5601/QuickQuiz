@@ -9,7 +9,7 @@
         android:id="@+id/fragSplash"
         android:name="com.example.quickquiz.fragment.FragSplash"
         android:label="frag_splash"
-        tools:layout="@layout/frag_splash" >
+        tools:layout="@layout/frag_splash">
         <action
             android:id="@+id/action_fragSplash_to_fragList"
             app:popUpToInclusive="true"
@@ -22,25 +22,36 @@
         android:id="@+id/fragList"
         android:name="com.example.quickquiz.fragment.FragList"
         android:label="frag_list"
-        tools:layout="@layout/frag_list" >
+        tools:layout="@layout/frag_list">
         <action
             android:id="@+id/action_fragList_to_fragDetails"
-            app:destination="@id/fragDetails" />
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_right"
+            app:destination="@id/fragDetails">
+
+        </action>
     </fragment>
     <fragment
         android:id="@+id/fragDetails"
         android:name="com.example.quickquiz.fragment.FragDetails"
         android:label="frag_details"
-        tools:layout="@layout/frag_details" >
+        tools:layout="@layout/frag_details">
+
         <action
             android:id="@+id/action_fragDetails_to_fragQuiz"
-            app:destination="@id/fragQuiz" />
+            app:destination="@id/fragQuiz"/>
+        <argument
+            android:name="position"
+            android:defaultValue="0"
+            app:argType="integer" />
     </fragment>
     <fragment
         android:id="@+id/fragQuiz"
         android:name="com.example.quickquiz.fragment.FragQuiz"
         android:label="frag_quiz"
-        tools:layout="@layout/frag_quiz" >
+        tools:layout="@layout/frag_quiz">
         <action
             android:id="@+id/action_fragQuiz_to_fragResult"
             app:destination="@id/fragResult" />

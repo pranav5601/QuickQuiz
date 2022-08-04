@@ -10,7 +10,7 @@ import com.example.quickquiz.R
 import com.example.quickquiz.model.Quiz
 import kotlinx.android.synthetic.main.cell_quiz_list.view.*
 
-class AdapterQuiz(private val baseContext: Context): RecyclerView.Adapter<AdapterQuiz.MyViewHolder>() {
+class AdapterQuiz(private val baseContext: Context, private val listener: (Int) -> Unit): RecyclerView.Adapter<AdapterQuiz.MyViewHolder>() {
 
     var quizList: ArrayList<Quiz>? = null
 
@@ -22,7 +22,7 @@ class AdapterQuiz(private val baseContext: Context): RecyclerView.Adapter<Adapte
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bindItems(quizList?.get(position),baseContext)
+        holder.bindItems(quizList?.get(position),baseContext, listener,position)
     }
 
     override fun getItemCount(): Int {
@@ -34,7 +34,12 @@ class AdapterQuiz(private val baseContext: Context): RecyclerView.Adapter<Adapte
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bindItems(quizData: Quiz?, baseContext: Context) {
+        fun bindItems(
+            quizData: Quiz?,
+            baseContext: Context,
+            listener: (Int) -> Unit,
+            position: Int
+        ) = with(itemView.btn_view_quiz) {
 
             val imgUri = quizData?.image
             itemView.txtQuizName.text = quizData?.name
@@ -45,6 +50,8 @@ class AdapterQuiz(private val baseContext: Context): RecyclerView.Adapter<Adapte
                 .centerCrop()
                 .placeholder(R.drawable.placeholder)
                 .into(itemView.img_quiz_poster)
+
+            itemView.btn_view_quiz.setOnClickListener { position.let { data -> listener(data) } }
 
 
         }

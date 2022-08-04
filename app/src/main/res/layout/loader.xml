@@ -3,16 +3,20 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
+    android:background="@color/black"
     android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
+        android:backgroundTint="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/large_space">
 
         <ProgressBar
+            android:background="@color/black"
+
             android:id="@+id/progress_wheel"
             android:layout_width="wrap_content"
             android:layout_margin="@dimen/small_space"

@@ -12,16 +12,13 @@ import kotlinx.android.synthetic.main.frag_splash.*
 class FragSplash : FragBase() {
 
     private var firebaseAuth : FirebaseAuth? = null
-    private var navController : NavController? = null
+
 
     override fun getFragView() = R.layout.frag_splash
 
     override fun setUpView(view: View) {
         firebaseAuth = FirebaseAuth.getInstance()
-        navController = Navigation.findNavController(view)
         txt_start_feedback.text = "Checking user account..."
-
-
 
     }
     override fun onStart() {

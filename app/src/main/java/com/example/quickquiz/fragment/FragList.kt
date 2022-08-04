@@ -1,6 +1,7 @@
 package com.example.quickquiz.fragment
 
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.get
@@ -20,11 +21,13 @@ class FragList : FragBase() {
 
     override fun setUpView(view: View) {
 
+        showLoader()
         initVariables()
         initRecyclerView()
         quizViewModel?.getQuizData()?.observe(viewLifecycleOwner, Observer {data->
             quizAdapter?.quizList = data
             quizAdapter?.notifyDataSetChanged()
+            closeLoader()
         })
     }
 
@@ -37,7 +40,12 @@ class FragList : FragBase() {
     private fun initVariables() {
 
         quizViewModel = ViewModelProvider(baseContext)[QuizViewModel::class.java]
-        quizAdapter = AdapterQuiz(baseContext)
+        quizAdapter = AdapterQuiz(baseContext) {
+            val action = FragListDirections.actionFragListToFragDetails(it)
+            navController?.navigate(action)
+
+//            navController?.navigate(R.id.action_fragList_to_fragDetails)
+        }
         quizViewModel = QuizViewModel()
 
 
