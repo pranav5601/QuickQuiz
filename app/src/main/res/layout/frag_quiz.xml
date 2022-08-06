@@ -4,29 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".fragment.FragQuiz">
 
     <ImageView
-        android:id="@+id/img_close_quiz"
+        android:id="@+id/imgCloseQuiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginEnd="192dp"
         android:src="@drawable/close"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/text_gray" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/txtQuizTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/crimson_text"
         android:text="@string/loading_quiz"
         android:textAlignment="center"
-        android:textColor="@color/text_color"
+        android:textColor="@color/purple_200"
         android:textSize="@dimen/very_very_big_text"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_close_quiz"
+        app:layout_constraintTop_toBottomOf="@+id/imgCloseQuiz"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_bias="0.031"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -38,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuizTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.192">
@@ -53,50 +55,53 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
+            android:id="@+id/txtQuestionNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="0"
             android:textAlignment="center"
-            android:textColor="@color/text_color"
+            android:textColor="@color/white"
             android:textSize="@dimen/very_big_text" />
 
     </LinearLayout>
 
 
-    <ProgressBar
-        android:id="@+id/progressBar"
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/proBarQuiz"
         android:layout_width="60dp"
-        android:layout_height="58dp"
+        android:layout_height="60dp"
+        app:cpb_progressbar_color="@color/purple_200"
         android:layout_marginTop="36dp"
-        android:progressTint="@color/purple_700"
-        android:indeterminate="true"
-        android:indeterminateTint="@color/purple_500"
+        app:cpb_background_progressbar_color="@color/transparent"
         app:layout_constraintStart_toEndOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuizTitle"
         app:layout_constraintHorizontal_bias="0.502" />
 
     <TextView
+        android:id="@+id/txtTimerCount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="10"
         android:textAlignment="center"
-        android:textColor="@color/text_color"
+        android:textColor="@color/white"
         android:textSize="@dimen/very_big_text"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="@+id/progressBar"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar"
-        app:layout_constraintStart_toStartOf="@+id/progressBar" />
+        app:layout_constraintBottom_toBottomOf="@+id/proBarQuiz"
+        app:layout_constraintTop_toTopOf="@+id/proBarQuiz"
+        app:layout_constraintEnd_toEndOf="@+id/proBarQuiz"
+        app:layout_constraintStart_toStartOf="@+id/proBarQuiz" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/txtQuestion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         android:text="Fetching Data"
         android:textAlignment="center"
-        android:textColor="@color/text_color"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuizTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
@@ -110,7 +115,7 @@
         android:layout_marginEnd="45dp"
         android:text="@string/option_button"
         android:textAllCaps="false"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/txtQuestion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 

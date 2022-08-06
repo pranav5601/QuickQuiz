@@ -51,7 +51,7 @@ class AdapterQuiz(private val baseContext: Context, private val listener: (Int) 
                 .placeholder(R.drawable.placeholder)
                 .into(itemView.img_quiz_poster)
 
-            itemView.btn_view_quiz.setOnClickListener { position.let { data -> listener(data) } }
+            itemView.btn_view_quiz.setOnClickListener { listener(position) }
 
 
         }

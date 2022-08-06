@@ -40,6 +40,10 @@
         tools:layout="@layout/frag_details">
 
         <action
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/disappear"
+            app:popEnterAnim="@anim/appear"
+            app:popExitAnim="@anim/slide_out_top"
             android:id="@+id/action_fragDetails_to_fragQuiz"
             app:destination="@id/fragQuiz"/>
         <argument
@@ -55,6 +59,14 @@
         <action
             android:id="@+id/action_fragQuiz_to_fragResult"
             app:destination="@id/fragResult" />
+        <argument
+            android:name="total_question"
+            android:defaultValue="0L"
+            app:argType="long" />
+        <argument
+            android:name="quizId"
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragResult"

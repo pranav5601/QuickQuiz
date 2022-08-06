@@ -9,6 +9,6 @@ data class Quiz(
     val visibility: String = "",
     val desc: String = "",
     val level: String = "",
-    val question: Long = 0,
+    val questions: Long = 0,
     val image: String = ""
 )
