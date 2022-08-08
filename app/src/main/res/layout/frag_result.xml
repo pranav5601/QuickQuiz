@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".fragment.FragResult">
 
     <TextView
@@ -13,35 +14,38 @@
         android:layout_marginTop="44dp"
         android:fontFamily="@font/crimson_text"
         android:text="@string/result"
+        android:textColor="@color/text_gray"
         android:textSize="@dimen/very_very_big_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintHorizontal_bias="0.498" />
 
-    <ProgressBar
-        android:id="@+id/progressBar2"
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+        android:id="@+id/proBarResult"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_marginTop="64dp"
         android:indeterminate="true"
-        android:indeterminateTint="@color/purple_500"
+        app:cpb_progressbar_color="@color/purple_200"
+        app:cpb_progress="75"
+        app:cpb_background_progressbar_color="@color/transparent"
         app:layout_constraintTop_toBottomOf="@+id/txt_result"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498" />
 
     <TextView
-        android:id="@+id/txt_percentage"
+        android:id="@+id/txtPercentage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="100%"
-        android:textColor="@color/text_color"
+        android:textColor="@color/white"
         android:textSize="@dimen/big_text"
-        app:layout_constraintStart_toStartOf="@+id/progressBar2"
-        app:layout_constraintEnd_toEndOf="@+id/progressBar2"
-        app:layout_constraintTop_toTopOf="@+id/progressBar2"
-        app:layout_constraintBottom_toBottomOf="@+id/progressBar2" />
+        app:layout_constraintStart_toStartOf="@+id/proBarResult"
+        app:layout_constraintEnd_toEndOf="@+id/proBarResult"
+        app:layout_constraintTop_toTopOf="@+id/proBarResult"
+        app:layout_constraintBottom_toBottomOf="@+id/proBarResult" />
 
     <TextView
         android:id="@+id/txt_correct_answer"
@@ -50,19 +54,19 @@
         android:layout_marginTop="60dp"
         android:text="@string/correct_answer"
         android:textColor="@color/text_gray"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+        app:layout_constraintTop_toBottomOf="@+id/proBarResult"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.162" />
 
     <TextView
-        android:id="@+id/txt_correct_answer_val"
+        android:id="@+id/txtCorrectAnsVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/na"
         android:textColor="@color/text_gray"
-        app:layout_constraintTop_toBottomOf="@+id/progressBar2"
+        app:layout_constraintTop_toBottomOf="@+id/proBarResult"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.888"
         app:layout_constraintStart_toEndOf="@+id/txt_correct_answer" />
@@ -80,7 +84,7 @@
         app:layout_constraintHorizontal_bias="0.159" />
 
     <TextView
-        android:id="@+id/txt_wrong_answer_val"
+        android:id="@+id/txtWrongAnswerVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -104,7 +108,7 @@
         app:layout_constraintHorizontal_bias="0.159" />
 
     <TextView
-        android:id="@+id/txt_question_missed_val"
+        android:id="@+id/txtQuestionMissedVal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -116,7 +120,7 @@
         app:layout_constraintHorizontal_bias="0.931" />
 
     <Button
-        android:id="@+id/btn_go_home"
+        android:id="@+id/btnGoHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"

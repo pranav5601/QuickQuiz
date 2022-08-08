@@ -11,7 +11,6 @@ import kotlinx.android.synthetic.main.frag_splash.*
 
 class FragSplash : FragBase() {
 
-    private var firebaseAuth : FirebaseAuth? = null
 
 
     override fun getFragView() = R.layout.frag_splash

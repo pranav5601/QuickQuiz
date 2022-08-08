@@ -67,10 +67,28 @@
             android:name="quizId"
             android:defaultValue="null"
             app:argType="string" />
+        <argument
+            android:name="quizName"
+            android:defaultValue="null"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/fragResult"
         android:name="com.example.quickquiz.fragment.FragResult"
         android:label="frag_result"
-        tools:layout="@layout/frag_result" />
+        tools:layout="@layout/frag_result" >
+
+        <argument
+            android:name="quizId"
+            android:defaultValue="null"
+            app:argType="string" />
+
+        <action
+            android:id="@+id/action_fragResult_to_fragList"
+            app:destination="@id/fragList" />
+        <action
+            android:id="@+id/action_fragResult_pop_including_fragList"
+            app:popUpTo="@id/fragResult"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

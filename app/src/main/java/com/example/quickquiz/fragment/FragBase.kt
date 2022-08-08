@@ -10,10 +10,23 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.example.quickquiz.activities.ActBase
 import com.example.quickquiz.activities.ActMain
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 abstract class FragBase : Fragment()  {
 
     var navController : NavController? = null
+    var firebaseAuth: FirebaseAuth? = FirebaseAuth.getInstance()
+    var fireStoreRep: FirebaseFirestore = FirebaseFirestore.getInstance()
+
+
+    fun getUid(): String{
+        return if (firebaseAuth?.currentUser != null){
+            firebaseAuth?.currentUser?.uid.toString()
+        }else{
+            ""
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
