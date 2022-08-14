@@ -29,8 +29,6 @@ class FragDetails : FragBase() {
     private var adView: AdView? = null
     private var android_id: String = ""
     private var mInterstitialAd: InterstitialAd? = null
-    private var mCountDownTimer: CountDownTimer? = null
-    private var mAdIsLoading: Boolean = false
     private var adRequest: AdRequest? = null
     private val TAG: String = "FragDetails"
 
@@ -39,30 +37,12 @@ class FragDetails : FragBase() {
 
     override fun setUpView(view: View) {
         position = getPosition.position
-        adRequest = AdRequest.Builder().build()
         loadAd()
-
-        android_id = Secure.getString(baseContext.contentResolver, Secure.ANDROID_ID)
-        MobileAds.initialize(baseContext) {}
-        MobileAds.setRequestConfiguration(
-            RequestConfiguration.Builder().setTestDeviceIds(listOf(android_id)).build()
-        )
-
-        var uniqueID = UUID.randomUUID().toString()
-
-        Log.e("Device ID", "$android_id, $uniqueID")
 
         Log.e("getPosition", position.toString())
 
         initViewModel()
         initClick()
-
-
-        MobileAds.initialize(baseContext) {
-
-            Toast.makeText(baseContext, "Ad is published", Toast.LENGTH_SHORT).show()
-        }
-
         attachBannerAd()
         attachInterstitialAd()
 
@@ -95,6 +75,18 @@ class FragDetails : FragBase() {
     }
 
     private fun loadAd() {
+
+        android_id = Secure.getString(baseContext.contentResolver, Secure.ANDROID_ID)
+
+
+        MobileAds.initialize(baseContext) {
+
+            Toast.makeText(baseContext, "Ad is published", Toast.LENGTH_SHORT).show()
+        }
+        MobileAds.setRequestConfiguration(
+            RequestConfiguration.Builder().setTestDeviceIds(listOf(android_id)).build()
+        )
+        adRequest = AdRequest.Builder().build()
         quizViewModel = ViewModelProvider(baseContext)[QuizViewModel::class.java]
         adView = AdView(baseContext)
     }
