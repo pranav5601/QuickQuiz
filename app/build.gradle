@@ -73,5 +73,8 @@ dependencies {
 
     //progressbar
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
+
+    //AdMob
+    implementation 'com.google.android.gms:play-services-ads:21.1.0'
 }
 apply plugin: 'kotlin-android-extensions'
