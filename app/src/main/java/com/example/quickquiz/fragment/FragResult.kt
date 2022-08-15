@@ -28,7 +28,7 @@ class FragResult : FragBase() {
 
     private fun initClick() {
         btnGoHome.setOnClickListener {
-            navController?.navigate(R.id.action_fragResult_to_fragList)
+            navController?.navigate(R.id.action_fragResult_pop_including_fragList)
         }
     }
 

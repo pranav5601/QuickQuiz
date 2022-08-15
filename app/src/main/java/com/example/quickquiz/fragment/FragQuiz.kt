@@ -1,15 +1,12 @@
 package com.example.quickquiz.fragment
 
-import android.os.Build
 import android.os.CountDownTimer
 import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.quickquiz.R
 import com.example.quickquiz.model.QuizQuestion
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.frag_quiz.*
 import kotlin.random.Random
 
@@ -73,8 +70,8 @@ class FragQuiz : FragBase() {
         result["wrong_ans"] = wrongAns
         result["unanswered"] = notAnswer
 
-        fireStoreRep?.collection("QuizList")?.document(quizId)?.collection("Result")
-            ?.document(getUid())?.set(result)?.addOnCompleteListener { task ->
+        fireStoreRep.collection("QuizList").document(quizId).collection("Result")
+            .document(getUid()).set(result).addOnCompleteListener { task ->
                 if (task.isSuccessful){
                     val fragResult = FragQuizDirections.actionFragQuizToFragResult(quizId)
                     navController?.navigate(fragResult)
@@ -87,15 +84,15 @@ class FragQuiz : FragBase() {
 
     private fun resetOption() {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            btn_option_one.setBackgroundColor(resources.getColor(R.color.text_gray, null))
-            btn_option_two.setBackgroundColor(resources.getColor(R.color.text_gray, null))
-            btn_option_three.setBackgroundColor(resources.getColor(R.color.text_gray, null))
 
-            btn_option_one.setTextColor(resources.getColor(R.color.black, null))
-            btn_option_two.setTextColor(resources.getColor(R.color.black, null))
-            btn_option_three.setTextColor(resources.getColor(R.color.black, null))
-        }
+            btn_option_one.setBackgroundColor(getColor(R.color.text_gray, null))
+            btn_option_two.setBackgroundColor(getColor(R.color.text_gray, null))
+            btn_option_three.setBackgroundColor(getColor(R.color.text_gray, null))
+
+            btn_option_one.setTextColor(getColor(R.color.black, null))
+            btn_option_two.setTextColor(getColor(R.color.black, null))
+            btn_option_three.setTextColor(getColor(R.color.black, null))
+
 
         btn_option_one.isEnabled = true
         btn_option_two.isEnabled = true
@@ -114,15 +111,15 @@ class FragQuiz : FragBase() {
                 correctAns++
                 txtFeedBack.text = getString(R.string.corerct_ans_feedback)
                 btnAnswer.setBackgroundResource(R.drawable.btn_correct_answer_bg)
-                txtFeedBack.setTextColor(resources.getColor(R.color.purple_200))
-                btnAnswer.setTextColor(resources.getColor(R.color.white))
+                txtFeedBack.setTextColor(getColor(R.color.purple_200, null))
+                btnAnswer.setTextColor(getColor(R.color.white, null))
             } else {
                 wrongAns++
                 btnAnswer.setBackgroundResource(R.drawable.btn_wrong_ans_bg)
                 txtFeedBack.text =
                     "Wrong answer \n Correct Answer: ${questionsToAnswer!![currentQuestion].answer}"
-                txtFeedBack.setTextColor(resources.getColor(R.color.yellow))
-                btnAnswer.setTextColor(resources.getColor(R.color.black))
+                txtFeedBack.setTextColor(getColor(R.color.yellow, null))
+                btnAnswer.setTextColor(getColor(R.color.black, null))
                 Log.e("Answer", "Wrong")
             }
             canAns = false
@@ -231,7 +228,7 @@ class FragQuiz : FragBase() {
 
             override fun onFinish() {
                 txtFeedBack.text = "Time Up!!"
-                txtFeedBack.setTextColor(resources.getColor(R.color.purple_200))
+                txtFeedBack.setTextColor(getColor(R.color.purple_200, null))
                 notAnswer++
                 showNextBtn()
                 canAns = false

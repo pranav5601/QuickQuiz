@@ -1,6 +1,8 @@
 package com.example.quickquiz.fragment
 
 import android.content.Context
+import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -55,6 +57,15 @@ abstract class FragBase : Fragment()  {
         }
 
     }
+
+    fun getColor (colorId: Int, colorTheme: Resources.Theme?): Int{
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+             resources.getColor(colorId, colorTheme)
+        }else{
+             resources.getColor(colorId)
+        }
+    }
+
     fun closeLoader(){
         if(baseContext is ActMain){
             (baseContext as? ActMain)?.closeIroidLoader()
