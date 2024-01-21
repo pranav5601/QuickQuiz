@@ -26,6 +26,7 @@ class FragDetails : FragBase() {
     private var quizId: String = ""
     private val getPosition: FragDetailsArgs by navArgs()
     private var totalQue: Long = 0
+    private var quizName: String = ""
     private var adView: AdView? = null
     private var android_id: String = ""
     private var mInterstitialAd: InterstitialAd? = null
@@ -159,7 +160,7 @@ class FragDetails : FragBase() {
 
 
              val passingAction =
-                 FragDetailsDirections.actionFragDetailsToFragQuiz(totalQue, quizId)
+                 FragDetailsDirections.actionFragDetailsToFragQuiz(totalQue,quizId,quizName)
 
              navController?.navigate(passingAction)
         }
@@ -173,6 +174,7 @@ class FragDetails : FragBase() {
             txtDetailTotalQueVal.text = data[position].questions.toString()
             quizId = data[position].quiz_id
             totalQue = data[position].questions
+            quizName = data[position].name
             getResultFromFirebase()
         })
     }
